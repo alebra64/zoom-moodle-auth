@@ -3,7 +3,7 @@
 // Dati della tua app Zoom
 $client_id = 'D9SL3ztxScWLjlPeCBFzBA';
 $client_secret = 'zSg8LFYiDSja5S3kK0fW3xZbY4B1dIhK';
-$redirect_uri = 'https://zoomoodle-ut.herokuapp.com/callback.php';
+$redirect_uri = 'https://zomoodle-8977176c3197.herokuapp.com/callback.php'; // <-- AGGIORNATO
 
 // Verifica se è presente il codice di autorizzazione
 if (isset($_GET['code'])) {
@@ -44,4 +44,3 @@ if (isset($_GET['code'])) {
 } else {
     echo '<h2>Authorization code non trovato nell\'URL.</h2>';
 }
-?>
