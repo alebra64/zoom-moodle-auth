@@ -3,7 +3,7 @@
 // Dati della tua app Zoom
 $client_id = 'D9SL3ztxScWLjlPeCBFzBA';
 $client_secret = 'zSg8LFYiDSja5S3kK0fW3xZbY4B1dIhK';
-$redirect_uri = 'https://zomoodle-8977176c3197.herokuapp.com/callback.php'; // <-- AGGIORNATO
+$redirect_uri = 'https://zomoodle-8977176c3197.herokuapp.com/callback.php';
 
 // Verifica se è presente il codice di autorizzazione
 if (isset($_GET['code'])) {
@@ -37,6 +37,14 @@ if (isset($_GET['code'])) {
     if (isset($responseData['access_token'])) {
         echo '<h2>Access Token ottenuto con successo:</h2>';
         echo '<pre>' . htmlspecialchars($response) . '</pre>';
+
+        // Salva i token in un file JSON
+        file_put_contents('token.json', json_encode([
+            'access_token' => $responseData['access_token'],
+            'refresh_token' => $responseData['refresh_token'],
+            'api_url' => $responseData['api_url']
+        ], JSON_PRETTY_PRINT));
+
     } else {
         echo '<h2>Errore nella richiesta:</h2>';
         echo '<pre>' . htmlspecialchars($response) . '</pre>';
